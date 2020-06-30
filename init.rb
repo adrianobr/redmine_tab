@@ -21,16 +21,21 @@ Rails.logger.info 'Starting Tab plugin for Redmine'
 
 Redmine::Plugin.register :redmine_tab do
   name 'Tab Plugin'
-  author 'James Turnbull'
-  description 'A plugin which adds Redmine tabs to embed content from an iframe on a per-project and system-wide base.'
+  author 'James Turnbull & Radek Gers'
+  description 'Plagin dodajacy taby.'
   version '0.4.0'
 
   settings :default => {
     'tab_text' => '',
     'tab_name' => 'Tab Name',
     'system_tab_text' => '',
-    'system_tab_name' => 'System Tab Name'
-
+    'system_tab_name' => 'System Tab Name',
+    'second_tab_text' => '',
+    'second_tab_name' => 'Second Tab Name',
+    'third_tab_text' => '',
+    'third_tab_name' => 'Third Tab Name',
+    'fourth_tab_text' => '',
+    'fourth_tab_name' => 'Fourth Tab Name'
   }, :partial => 'settings/redminetab_settings'
 
   # This plugin adds a project module
@@ -65,4 +70,24 @@ Redmine::Plugin.register :redmine_tab do
        { :controller => 'tab', :action => 'system_show' },
        :caption => Proc.new { string_or_translate.call('system_tab_name') },
        :if => Proc.new { !Setting.plugin_redmine_tab['system_tab_name'].blank? })
+
+  # second item added to top menu
+  menu(:top_menu,
+       :second_tab,
+       { :controller => 'tab', :action => 'second_show' },
+       :caption => Proc.new { string_or_translate.call('second_tab_name') },
+       :if => Proc.new { !Setting.plugin_redmine_tab['second_tab_name'].blank? })
+
+  menu(:top_menu,
+       :third_tab,
+       { :controller => 'tab', :action => 'third_show' },
+       :caption => Proc.new { string_or_translate.call('third_tab_name') },
+       :if => Proc.new { !Setting.plugin_redmine_tab['third_tab_name'].blank? })
+
+  menu(:top_menu,
+       :fourth_tab,
+       { :controller => 'tab', :action => 'fourth_show' },
+       :caption => Proc.new { string_or_translate.call('fourth_tab_name') },
+       :if => Proc.new { !Setting.plugin_redmine_tab['fourth_tab_name'].blank? })
+
 end

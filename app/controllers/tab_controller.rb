@@ -32,7 +32,22 @@ class TabController < ApplicationController
     @tab_text = Setting.plugin_redmine_tab['system_tab_text']
     render :action => 'show'
   end
-  
+
+  def second_show
+    @tab_text = Setting.plugin_redmine_tab['second_tab_text']
+    render :action => 'show'
+  end
+
+  def third_show
+    @tab_text = Setting.plugin_redmine_tab['third_tab_text']
+    render :action => 'show'
+  end
+
+  def fourth_show
+    @tab_text = Setting.plugin_redmine_tab['fourth_tab_text']
+    render :action => 'show'
+  end
+
   private
   
   def find_project
