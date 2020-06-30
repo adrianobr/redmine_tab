@@ -1,4 +1,4 @@
-=Tab plugin
+=Tab plugin for Redmine
 
 A Redmine plugin which adds new Redmine tabs to embed content from an iframe on a per-project and system-wide base.
 
@@ -6,9 +6,13 @@ A Redmine plugin which adds new Redmine tabs to embed content from an iframe on 
 
 * James Turnbull
 
+== Editor
+
+* Diluke
+
 ==Latest release
 
-The currently available, latest release of the plugin is version <b>0.4.0</b>.
+The currently available, latest release of the plugin is version <b>0.5.0</b>.
 
 ==Changelog
 
@@ -17,29 +21,36 @@ For the complete changelog see the <tt>CHANGELOG</tt> file in the Tab plugin dir
 ==Description
 
 The Tab plugin is a Redmine plugin which provides the ability to create a new Redmine tab, to embed content from an iframe, on a per-project base. This is done by storing the iframe-snippet in a project custom field.
-It also provides the ability to add a new, system-wide top menu tab. The iframe-source for that tab can be configured in the plugin settings.
+It also provides the ability to add a new (up to four), system-wide top menu tab. The iframe-source for that tab can be configured in the plugin settings.
 
 Besides these two features it also allows you to modify the actual tab and link names, without changing the source of the plugin, in the plugin settings.
 
 ==Compatibility
 
-This plugin is compatible with Redmine 0.8.x as well as with the Redmine trunk.
+This plugin is compatible with Redmine 3.4.13.stable.
 
 ==Obtaining 
 
-<i>URL of the GitHub repository: http://github.com/jamtur01/redmine_tab/tree/master</i>
+<i>URL of the GitHub repository: http://github.com/diluke/redmine_tab/tree/master</i>
 
 The source of this plugin can be "cloned" from the GitHub-repo using:
 
-  $ cd {REDMINE_ROOT}/vendor/plugins && git clone git://github.com/jamtur01/redmine_tab.git
+  $ cd {REDMINE_ROOT}/vendor/plugins && git clone git://github.com/diluke/redmine_tab.git
 
 ==Installation
 
 1. Download the plugin from the available source (see http://www.redmine.org/wiki/redmine/PluginTab#Obtaining)
+- git clone https://github.com/diluke/redmine_tab.git  into REDMINE Plugins catalog
 2. Install the plugin as described at: http://www.redmine.org/wiki/redmine/Plugins (this plugin does not require a plugin database migration)
+- (Ubuntu) RAILS_ENV=production bundle exec rake redmine:plugins:migrate
 3. Restart Redmine
+- (Apache2) systemctl restart apache2
 
 ==Setup
+
+Go to 'Admin' -> 'Plugins' -> redmine_tab
+or
+{REDMINE_URL}/settings/plugin/redmine_tab
 
 ===Project-specific tabs
 
@@ -74,18 +85,22 @@ The iframe-source for the new top menu link can be globally configured using the
 
 ==Support
 
-If you would like to report a bug or request a new feature you can open a new issue at the issue-tracking section of the plugins' GitHub site: http://github.com/jamtur01/redmine_tab/issues.
-You can also post about the plugin in the dedicated plugin-section of the "Redmine forums" (http://www.redmine.org/projects/redmine/boards/3).
+If you would like to report a bug or request a new feature you can open a new issue at the issue-tracking section of the plugins' GitHub site: http://github.com/diluke/redmine_tab/issues.
 
 As an alternative you can also join the <tt>#redmine</tt> channel on the "freenode" (http://freenode.net/irc_servers.shtml) IRC network to see if there is anyone who can provide some support.
 
 ==Credits
 
+Pre-fork
 * Mischa the Evil for extensive updates and refactoring
 * Eric Davis for numerous fixes and new features
+
+Post-fork
+* Radek for adding new tabs and knowledge
 
 ==Licensing
 
 This plugin is open-source and licensed under the "GNU General Public License v2" (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) (GPL). See the included <tt>COPYRIGHT.txt</tt> and <tt>GPL.txt</tt> files for details.
 
 * (C) 2009, James Turnbull (http://www.james-turnbull.net)
+* (C) 2020, Diluke
